@@ -20,6 +20,10 @@ inputs:
     description: Github token with read permission to artifacts in given repo.
     required: false
     default: ""
+  download_tmp_dir:
+    description: Temporary directory to download assets (default to OS temp dir).
+    required: false
+    default: ""
 
   workflow_conclusion:
     description: Conclusion for an workflow run.
@@ -45,5 +49,5 @@ outputs:
   download_path:
     description: Download path of the content of the artifact
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/main.js"

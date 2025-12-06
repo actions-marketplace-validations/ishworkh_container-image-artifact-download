@@ -30,6 +30,10 @@ It supports downloading image artifacts from
 
 **Optional** Token with enough permissions to download artifact(s) from repo and workflow. It is required if `workflow` is set to different workflow than the currently running.
 
+### `download_tmp_dir`
+
+**Optional** Temporary directory to download assets temporarily before loading to the container engine (default to OS temp dir).
+
 ### `workflow_run_id`
 
 **Optional** Filter workflow runs based workflow event. This takes the precedence over all filters if it is set.
@@ -50,6 +54,10 @@ It supports downloading image artifacts from
 
 **Optional** Filter workflow runs based workflow event.
 
+### `download_tmp_dir`
+
+**Optional** Temporary directory to download assets (default to OS temp dir). Eg. `${{ runner.temp }}`.
+
 ## Outputs
 
 ### `download_path`
@@ -68,7 +76,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Download image
-      uses: ishworkh/container-image-artifact-download@v1.0.0
+      uses: ishworkh/container-image-artifact-download@v2.0.0
       with:
         image: "test_image:latest"
 
@@ -82,7 +90,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Download image
-      uses: ishworkh/container-image-artifact-download@v1.0.0
+      uses: ishworkh/container-image-artifact-download@v2.0.0
       with:
         image: "test_image:latest"
         container_engine: "podman"
@@ -99,7 +107,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Download image
-      uses: ishworkh/container-image-artifact-download@v1.0.0
+      uses: ishworkh/container-image-artifact-download@v2.0.0
       with:
         image: "test_image:latest"
         workflow: "Some Another Workflow"
@@ -116,7 +124,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Download image
-      uses: ishworkh/container-image-artifact-download@v1.0.0
+      uses: ishworkh/container-image-artifact-download@v2.0.0
       with:
         image: "test_image:latest"
         workflow: "Some Another Workflow"
@@ -134,7 +142,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Download image
-      uses: ishworkh/container-image-artifact-download@v1.0.0
+      uses: ishworkh/container-image-artifact-download@v2.0.0
       with:
         image: "test_image:latest"
         workflow: "Some Another Workflow"
@@ -155,7 +163,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Download image
-      uses: ishworkh/container-image-artifact-download@v1.0.0
+      uses: ishworkh/container-image-artifact-download@v2.0.0
       with:
         image: "test_image:latest"
         repository: "owner/my-repo"
@@ -164,6 +172,26 @@ jobs:
 ```
 
 ## Changelogs
+
+### `v2.1.0`
+
+- Add download_tmp_dir input
+
+### `v2.0.0`
+
+- Use v4 of @actions/download-artifact
+- Update other dependencies
+
+Migration:
+- Compatiable with only >=v2.0.0 for ishworkh/container-image-artifact-upload
+
+### `v1.1.1`
+
+- Fix README
+
+### `v1.1.0`
+
+- Update for nodejs 20
 
 ### `v1.0.0`
 
